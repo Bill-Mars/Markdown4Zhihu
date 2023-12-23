@@ -19,14 +19,10 @@ imageNameKey : Advanced1
 
 下图给出了一系列线性的传输函数，以Class B（虚线）和平方律器件（n=1）为界的区域内（书上称之为狗腿区域, dog-leg region）都是线性的，它们的波形只包含偶次谐波，n越大，电流波形越接近Class B。
 
-![](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/Advanced techniques in RF power Amplifier design-1/Advanced1-1.png)
-![](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/Advanced techniques in RF power Amplifier design-1/Advanced1-2.png)
-![这里是一个测试图片](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/一个测试文档/image-01.png)
+![kk](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/Advanced techniques in RF power Amplifier design-1/Advanced1-1.png)
 
+![kkk](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/Advanced techniques in RF power Amplifier design-1/Advanced1-2.png)
 
-![这里是一个测试图片](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/一个测试文档/image-01.png)
-
-![](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/一个测试文档/image-01.png)
 
 
 但书中也没有指出如何求得n = 2, 4, 6… 时的传输函数（只给出了不同n对应的电流波形表达式$$ I_D(\theta) = cos\theta+k_2cos2\theta+...+k_{2n}cos2n\theta$$ ），大约是求出来也意义不大的缘故罢。
