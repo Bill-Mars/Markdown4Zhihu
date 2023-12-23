@@ -11,33 +11,33 @@ imageNameKey : Advanced1
 ## 1.3  dog-leg region
 
 理想Class B如前所述，是线性器件。
-事实上，平方律器件：$I_D=V_i^2$偏置在$\frac{1}{2}I_{max}$时也是线性器件。
+事实上，平方律器件：$$ I_D=V_i^2$$ 偏置在$$ \frac{1}{2}I_{max}$$ 时也是线性器件。
 
-对于$v_i=0.5+v_scos\theta$, 有$I_d =(\frac{1}{4}+\frac{1}{2}v_s^2)+v_scos\theta+\frac{1}{2}v_s^2cos2\theta$。第一个括号项是直流分量，$cos\theta$项是其基波分量，显然基波分量也是输入信号$v_i$的线性函数，因此也是线性器件。
+对于$$ v_i=0.5+v_scos\theta$$ , 有$$ I_d =(\frac{1}{4}+\frac{1}{2}v_s^2)+v_scos\theta+\frac{1}{2}v_s^2cos2\theta$$ 。第一个括号项是直流分量，$$ cos\theta$$ 项是其基波分量，显然基波分量也是输入信号$$ v_i$$ 的线性函数，因此也是线性器件。
 
-同理，立方律器件：$I_d=v_i^3$偏置在$\frac{1}{2}I_{max}$时就不是线性的。因为输出的基波分量为$\frac{3}{4}(v_s+v_s^2)$不是$v_s$的线性函数。
+同理，立方律器件：$$ I_d=v_i^3$$ 偏置在$$ \frac{1}{2}I_{max}$$ 时就不是线性的。因为输出的基波分量为$$ \frac{3}{4}(v_s+v_s^2)$$ 不是$$ v_s$$ 的线性函数。
 
 下图给出了一系列线性的传输函数，以Class B（虚线）和平方律器件（n=1）为界的区域内（书上称之为狗腿区域, dog-leg region）都是线性的，它们的波形只包含偶次谐波，n越大，电流波形越接近Class B。
 
 ![](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/Advanced techniques in RF power Amplifier design-1/Advanced1-1.png)
 ![](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/Advanced techniques in RF power Amplifier design-1/Advanced1-2.png)
 
-但书中也没有指出如何求得n = 2, 4, 6… 时的传输函数（只给出了不同n对应的电流波形表达式$I_D(\theta) = cos\theta+k_2cos2\theta+...+k_{2n}cos2n\theta$），大约是求出来也意义不大的缘故罢。
+但书中也没有指出如何求得n = 2, 4, 6… 时的传输函数（只给出了不同n对应的电流波形表达式$$ I_D(\theta) = cos\theta+k_2cos2\theta+...+k_{2n}cos2n\theta$$ ），大约是求出来也意义不大的缘故罢。
 
 ## 1.4 BJT中的trade off
 
-BJT的传输特性为$I_c=\beta I_b=\beta e^{k(v_b-1)}$。由于是电流控制的电流源，跟FET的一个区别是输入阻抗小，基极电压$v_b$不等于信号源$v_{in}$：
+BJT的传输特性为$$ I_c=\beta I_b=\beta e^{k(v_b-1)}$$ 。由于是电流控制的电流源，跟FET的一个区别是输入阻抗小，基极电压$$ v_b$$ 不等于信号源$$ v_{in}$$ ：
 ![](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/Advanced techniques in RF power Amplifier design-1/Advanced1-3.png)
 
-基极电压$v_b=v_{in}-i_bR$，因此$i_b=e^{k((v_{in}-i_bR)-1)}$，从而$v_{in}=i_bR+1+\frac{1}{k}lni_b$
+基极电压$$ v_b=v_{in}-i_bR$$ ，因此$$ i_b=e^{k((v_{in}-i_bR)-1)}$$ ，从而$$ v_{in}=i_bR+1+\frac{1}{k}lni_b$$ 
 
 可由此画出不同源阻抗对应的BJT传输特性：
 ![](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/Advanced techniques in RF power Amplifier design-1/Advanced1-4.png)
-上图可见源阻抗R为0时BJT有“增益膨胀”的问题，而源阻抗远大于输入阻抗时就能认为BJT接近线性（可以想象横轴上$V_{be}$有两个不同幅度的正弦波摆动，对应的纵轴的$i_b$得到的波形的基波分量幅度是否与$V_{be}$的成比例）。
+上图可见源阻抗R为0时BJT有“增益膨胀”的问题，而源阻抗远大于输入阻抗时就能认为BJT接近线性（可以想象横轴上$$ V_{be}$$ 有两个不同幅度的正弦波摆动，对应的纵轴的$$ i_b$$ 得到的波形的基波分量幅度是否与$$ V_{be}$$ 的成比例）。
 
 但是通过增大源阻抗的方法来实现BJT的线性放大有两个问题：
 1. 源阻抗越大阻抗失配越严重，增益越低。
-2. 线性传输时，若要求集电极电流$i_c$为不失真的单音，那么基极电流$i_b$也须是单音，但相应的基极电压就不是单音了，包含谐波成分。因此通过增大源阻抗实现线性，要求源阻抗在谐波上也足够大。（考虑上文的$v_{in}=i_bR+1+\frac{1}{k}lni_b$在二次谐波的频率下，由于$v_{in}$和$i_b$都为单音，在二次谐波上就都为0，那么等式就化为$0=0\cdot R+1+\frac{1}{k}ln0$，此时只有R为无穷大才能保证在二次谐波上的谐波平衡。）
+2. 线性传输时，若要求集电极电流$$ i_c$$ 为不失真的单音，那么基极电流$$ i_b$$ 也须是单音，但相应的基极电压就不是单音了，包含谐波成分。因此通过增大源阻抗实现线性，要求源阻抗在谐波上也足够大。（考虑上文的$$ v_{in}=i_bR+1+\frac{1}{k}lni_b$$ 在二次谐波的频率下，由于$$ v_{in}$$ 和$$ i_b$$ 都为单音，在二次谐波上就都为0，那么等式就化为$$ 0=0\cdot R+1+\frac{1}{k}ln0$$ ，此时只有R为无穷大才能保证在二次谐波上的谐波平衡。）
 
 考虑Class A的FET，其输入为单音时，输出也为单音。但类似地如果要实现Class A的BJT，就同样要求集电极电流ic为单音，因此就要求BJT的源阻抗在谐波上足够大，即“谐波开路”。同时基波上的阻抗不能太大以避免降低增益，但又不能太小因为BJT会呈现增益膨胀特性恶化线性。
 
@@ -78,7 +78,7 @@ BJT的传输特性为$I_c=\beta I_b=\beta e^{k(v_b-1)}$。由于是电流控制�
 ## 增益膨胀器件的IM notch
 
 假设一个器件的Id-Vin曲线如下：
-$I_d= I_{max}(g_zV_{in}+(1-g_z)V_{in}^2)$
+$$ I_d= I_{max}(g_zV_{in}+(1-g_z)V_{in}^2)$$ 
 不同gz的传输特性曲线为
 ![](https://raw.githubusercontent.com/Bill-Mars/Markdown4Zhihu/master/Data/Advanced techniques in RF power Amplifier design-1/Advanced1-13.png)
 适当选择静态电流时，它们（双音输入时的）IM3会呈现一个”notch”，如下图：
