@@ -34,7 +34,7 @@ def process_for_zhihu():
     with open(str(args.input),"r",encoding=args.encoding) as f:
         lines = f.read()
         lines = image_ops(lines)
-        lines = formula_ops(lines)
+        # lines = formula_ops(lines)
         lines = table_ops(lines)
         with open(op.join(args.current_script_data_path, args.input.stem+"_for_zhihu.md"), "w+", encoding=args.encoding) as fw:
             fw.write(lines)
@@ -42,10 +42,10 @@ def process_for_zhihu():
         git_ops()
 
 # Deal with the formula and change them into Zhihu original format
-def formula_ops(_lines):
-    _lines = re.sub('((.*?)\$\$)(\s*)?([\s\S]*?)(\$\$)\n', '\n<img src="https://www.zhihu.com/equation?tex=\\4" alt="\\4" class="ee_img tr_noresize" eeimg="1">\n', _lines)
-    _lines = re.sub('(\$)(?!\$)(.*?)(\$)', ' <img src="https://www.zhihu.com/equation?tex=\\2" alt="\\2" class="ee_img tr_noresize" eeimg="1"> ', _lines)
-    return _lines
+# def formula_ops(_lines):
+#     _lines = re.sub('((.*?)\$\$)(\s*)?([\s\S]*?)(\$\$)\n', '\n<img src="https://www.zhihu.com/equation?tex=\\4" alt="\\4" class="ee_img tr_noresize" eeimg="1">\n', _lines)
+#     _lines = re.sub('(\$)(?!\$)(.*?)(\$)', ' <img src="https://www.zhihu.com/equation?tex=\\2" alt="\\2" class="ee_img tr_noresize" eeimg="1"> ', _lines)
+#     return _lines
 
 # The support function for image_ops. It will take in a matched object and make sure they are competible
 def rename_image_ref(m, original=True):
